@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Awesome Image Page</title>
+  <style>
+    body {
+      margin: 0;
+      background: black;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      font-family: 'Arial', sans-serif;
+      color: gold;
+    }
+
+    img {
+      max-width: 400px;
+      border: 5px solid gold;
+      border-radius: 15px;
+      box-shadow: 0 0 20px gold;
+    }
+
+    h1 {
+      margin-top: 20px;
+      font-size: 2.5rem;
+      color: gold;
+      text-shadow: 0 0 10px gold, 0 0 20px orange, 0 0 30px yellow;
+      animation: shimmer 2s infinite;
+    }
+
+    @keyframes shimmer {
+      0% { text-shadow: 0 0 10px gold, 0 0 20px orange, 0 0 30px yellow; }
+      50% { text-shadow: 0 0 20px yellow, 0 0 40px orange, 0 0 60px gold; }
+      100% { text-shadow: 0 0 10px gold, 0 0 20px orange, 0 0 30px yellow; }
+    }
+
+    .firework {
+      position: absolute;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: red;
+      animation: explode 1s ease-out forwards;
+    }
+
+    @keyframes explode {
+      0% {
+        transform: scale(1);
+        opacity: 1;
+      }
+      100% {
+        transform: scale(10);
+        opacity: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <img src="Texas-AM-Aggies-logo.png" alt="Awesome Image">
+  <h1>This image is awesome</h1>
+
+  <script>
+    function createFirework() {
+      const firework = document.createElement('div');
+      firework.className = 'firework';
+      firework.style.left = Math.random() * window.innerWidth + 'px';
+      firework.style.top = Math.random() * window.innerHeight + 'px';
+      firework.style.background = `hsl(${Math.random() * 360}, 100%, 50%)`;
+      document.body.appendChild(firework);
+      setTimeout(() => firework.remove(), 1000);
+    }
+
+    setInterval(createFirework, 300);
+  </script>
+</body>
+</html>
